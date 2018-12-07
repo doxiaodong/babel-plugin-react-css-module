@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
-    "lib": ["esnext"],
+    "module": "commonjs",
+    "target": "esnext",
     "outDir": "lib"
   }
 }

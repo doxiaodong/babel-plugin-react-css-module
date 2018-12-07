@@ -14,8 +14,6 @@ export default {
   ImportDeclaration(path, state) {
     const { node } = path;
 
-    // TODO: 缓存 styles，替换后判断是否是已处理过的样式
-    // 后续替换 className 的时候需要用到这个 styles
     if (!isSpecifiersImport(node) && isStyleModule(node)) {
       const styles = path.scope.generateUidIdentifier('styles');
       cache.setStyles(styles.name);
