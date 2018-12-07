@@ -14,10 +14,10 @@ export default declare((api, options, dirname) => {
     pre() {},
     visitor: {
       ...ImportDeclarationVisitor,
-      ...JSXAttributeVisitor
+      ...JSXAttributeVisitor,
     },
     post() {
       cache.clear();
-    }
+    },
   } as PluginObj;
 });

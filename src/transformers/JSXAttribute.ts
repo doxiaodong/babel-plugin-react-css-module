@@ -22,14 +22,14 @@ class ClassNamePlugin {
           pre = t.memberExpression(
             t.identifier(styles),
             t.stringLiteral(i),
-            true
+            true,
           );
         } else {
           pre = t.binaryExpression('+', pre, t.stringLiteral(' '));
           pre = t.binaryExpression(
             '+',
             pre,
-            t.memberExpression(t.identifier(styles), t.stringLiteral(i), true)
+            t.memberExpression(t.identifier(styles), t.stringLiteral(i), true),
           );
         }
         return pre;
@@ -41,8 +41,8 @@ class ClassNamePlugin {
     this._path.replaceWith(
       t.jsxAttribute(
         t.jsxIdentifier('className'),
-        t.jsxExpressionContainer(this._getExpressionByStringLiteral(value))
-      )
+        t.jsxExpressionContainer(this._getExpressionByStringLiteral(value)),
+      ),
     );
   }
 
@@ -62,12 +62,6 @@ class ClassNamePlugin {
     // TODO: 把 left, right 合并
     if (t.isStringLiteral(left) && left.value.trim() !== '') {
       // TODO: 有其他方法更新？
-      // expression.left = t.binaryExpression(
-      //   '+',
-      //   // 补一个空格
-      //   t.stringLiteral(' '),
-      //   this._getExpressionByStringLiteral(left.value)
-      // );
       expression.left = this._getExpressionByStringLiteral(left.value);
     }
     if (t.isBinaryExpression(left)) {
@@ -79,7 +73,7 @@ class ClassNamePlugin {
         '+',
         // right 需要补一个空格, left 不需要
         t.stringLiteral(' '),
-        this._getExpressionByStringLiteral(right.value)
+        this._getExpressionByStringLiteral(right.value),
       );
     }
     if (t.isBinaryExpression(right)) {
@@ -92,9 +86,8 @@ class ClassNamePlugin {
         // className={'home base'}
         this._replaceStringLiteral(this._node.value.expression.value);
       } else if (t.isBinaryExpression(this._node.value.expression)) {
+        // className={'home' + ' base'}
         this._doBinaryExpression(this._node.value.expression);
-        // const { left, right } = this._node.value.expression;
-        // console.log(111, this._node.value.expression);
       }
     }
   }
@@ -107,5 +100,5 @@ export default {
     if (node.name.name === 'className') {
       new ClassNamePlugin(path);
     }
-  }
+  },
 } as Visitor;

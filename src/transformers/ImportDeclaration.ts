@@ -18,8 +18,8 @@ export default {
       const styles = path.scope.generateUidIdentifier('styles');
       cache.setStyles(styles.name);
       path.replaceWith(
-        t.importDeclaration([t.importDefaultSpecifier(styles)], node.source)
+        t.importDeclaration([t.importDefaultSpecifier(styles)], node.source),
       );
     }
-  }
+  },
 } as Visitor;
