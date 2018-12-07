@@ -27,7 +27,7 @@
   "jest": {
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      "^.+\\.ts$": "ts-jest"
     },
     "testRegex": "/test/index.js$",
     "moduleFileExtensions": [
