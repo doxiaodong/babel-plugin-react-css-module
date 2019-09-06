@@ -1,5 +1,5 @@
-import { Visitor, types as t } from '@babel/core';
-import cache from '../cache';
+import { Visitor, types as t, template } from '@babel/core';
+import cache, { cssModuleFnName, cssVar } from '../cache';
 
 function isStyleModule(node) {
   // TODO: 可配置
@@ -21,5 +21,45 @@ export default {
         t.importDeclaration([t.importDefaultSpecifier(styles)], node.source),
       );
     }
+  },
+
+  Program: {
+    exit(path) {
+      const firstNonImportDeclarationNode = path.get('body').find(node => {
+        return !t.isImportDeclaration(node);
+      });
+
+      if (firstNonImportDeclarationNode) {
+        firstNonImportDeclarationNode.insertBefore(
+          template.statements(`
+            function ${cssModuleFnName}(modules) {
+              modules = modules || [];
+              var a = {};
+              modules.forEach(function(i) {
+                if (i) {
+                  a = Object.assign(a, i);
+                }
+              });
+
+              function h(k) {
+                return a[k] || k;
+              }
+              return function(str) {
+                return str.replace(/ +/g, ' ').trim().split(' ')
+                .reduce(function(c, i) {
+                  if (!c) {
+                    c += h(i);
+                  } else {
+                    c += ' ' + h(i);
+                  }
+                  return c;
+                }, null);
+              }
+            }
+            var ${cssVar} = ${cssModuleFnName}([${cache.getStyles()}]);
+          `)(),
+        );
+      }
+    },
   },
 } as Visitor;

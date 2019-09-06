@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-react-css-module",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -13,23 +13,24 @@
   },
   "author": "duxiaodong",
   "license": "MIT",
-  "devDependencies": {
-    "@babel/core": "^7.2.0",
-    "@babel/helper-plugin-test-runner": "^7.1.0",
+  "dependencies": {
+    "@babel/core": "^7.5.5",
     "@babel/helper-plugin-utils": "^7.0.0",
-    "@babel/plugin-syntax-jsx": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
-    "@types/babel__core": "^7.0.4",
-    "@types/babel__generator": "^7.0.1",
-    "@types/babel__template": "^7.0.1",
-    "@types/babel__traverse": "^7.0.4",
-    "@types/node": "^10.12.12",
-    "babel-core": "^7.0.0-bridge.0",
-    "husky": "^1.2.0",
-    "jest": "^23.6.0",
-    "prettier": "^1.15.3",
-    "ts-jest": "^23.10.5",
-    "typescript": "^3.2.1"
+    "@babel/plugin-syntax-jsx": "^7.2.0"
+  },
+  "devDependencies": {
+    "@babel/helper-plugin-test-runner": "^7.1.0",
+    "@babel/preset-env": "^7.5.5",
+    "@types/babel__core": "^7.1.3",
+    "@types/babel__generator": "^7.0.2",
+    "@types/babel__template": "^7.0.2",
+    "@types/babel__traverse": "^7.0.7",
+    "@types/node": "^12.7.4",
+    "husky": "^3.0.5",
+    "jest": "^24.9.0",
+    "prettier": "^1.18.2",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.6.2"
   },
   "jest": {
     "transform": {

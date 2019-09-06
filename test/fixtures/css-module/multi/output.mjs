@@ -1,4 +1,5 @@
 import _styles from './a.less';
+import _styles2 from './b.less';
 
 function _rcm_style_fn(modules) {
   modules = modules || [];
@@ -26,12 +27,6 @@ function _rcm_style_fn(modules) {
   };
 }
 
-var _rcm_style = _rcm_style_fn([_styles]);
+var _rcm_style = _rcm_style_fn([_styles, _styles2]);
 
 <div className={_rcm_style("home")} onClick={() => null} />;
-<div className={_rcm_style("ho-me base")} />;
-<div className={_rcm_style(x)} />;
-<div className={_rcm_style('home' + ' base c            xy' + ' ddd')} />;
-<div className={_rcm_style('home')} />;
-<div className={_rcm_style('home' + '-base' + x)} />;
-<div className={_rcm_style(x('home'))} />;
