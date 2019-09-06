@@ -11,6 +11,9 @@
     "build": "rm -rf lib && tsc -d",
     "ci": "npm run check && npm run test"
   },
+  "files": [
+    "lib"
+  ],
   "author": "duxiaodong",
   "license": "MIT",
   "dependencies": {
