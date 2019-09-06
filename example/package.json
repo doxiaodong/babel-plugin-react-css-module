@@ -3,6 +3,7 @@
     "dev": "BABEL_CACHE=none umi dev"
   },
   "devDependencies": {
+    "babel-plugin-react-css-module": "^1.0.0-beta.4",
     "umi": "^2.9.3"
   }
 }

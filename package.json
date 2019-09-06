@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-react-css-module",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -29,6 +29,7 @@
     "@types/babel__generator": "^7.0.2",
     "@types/babel__template": "^7.0.2",
     "@types/babel__traverse": "^7.0.7",
+    "@types/jest": "^24.0.18",
     "@types/node": "^12.7.4",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
@@ -41,7 +42,10 @@
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
       "^.+\\.ts$": "ts-jest"
     },
-    "testRegex": "/test/index.js$",
+    "testRegex": [
+      "/test/index.js$",
+      "(\\.|/)(test|spec)\\.ts$"
+    ],
     "moduleFileExtensions": [
       "ts",
       "js"

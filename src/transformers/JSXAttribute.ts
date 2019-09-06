@@ -1,5 +1,5 @@
 import { Visitor, types as t } from '@babel/core';
-import { cssVar } from '../cache';
+import cache, { cssVar } from '../cache';
 import { NodePath } from '@babel/traverse';
 
 class ClassNamePlugin {
@@ -14,12 +14,14 @@ class ClassNamePlugin {
     return t.callExpression(t.identifier(cssVar), [value]);
   }
   private _replaceExpression(value: any) {
-    this._path.replaceWith(
-      t.jsxAttribute(
-        t.jsxIdentifier('className'),
-        t.jsxExpressionContainer(this._getExpression(value)),
-      ),
-    );
+    if (cache.getStyles().length > 0) {
+      this._path.replaceWith(
+        t.jsxAttribute(
+          t.jsxIdentifier('className'),
+          t.jsxExpressionContainer(this._getExpression(value)),
+        ),
+      );
+    }
   }
 
   StringLiteral() {

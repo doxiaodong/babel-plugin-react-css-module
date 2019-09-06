@@ -29,33 +29,11 @@ export default {
         return !t.isImportDeclaration(node);
       });
 
-      if (firstNonImportDeclarationNode) {
+      if (firstNonImportDeclarationNode && cache.getStyles().length > 0) {
         firstNonImportDeclarationNode.insertBefore(
           template.statements(`
-            function ${cssModuleFnName}(modules) {
-              modules = modules || [];
-              var a = {};
-              modules.forEach(function(i) {
-                if (i) {
-                  a = Object.assign(a, i);
-                }
-              });
+            import ${cssModuleFnName} from 'babel-plugin-react-css-module/lib/runtime';
 
-              function h(k) {
-                return a[k] || k;
-              }
-              return function(str) {
-                return str.replace(/ +/g, ' ').trim().split(' ')
-                .reduce(function(c, i) {
-                  if (!c) {
-                    c = h(i);
-                  } else {
-                    c += ' ' + h(i);
-                  }
-                  return c;
-                }, null);
-              }
-            }
             var ${cssVar} = ${cssModuleFnName}([${cache.getStyles()}]);
           `)(),
         );
