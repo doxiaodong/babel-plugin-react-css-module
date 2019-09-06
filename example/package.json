@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "dev": "BABEL_CACHE=none umi dev"
+  },
+  "devDependencies": {
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-plugin-react-css-module": "^1.0.0-beta.1",
+    "umi": "^2.9.3"
+  }
+}

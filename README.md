@@ -41,7 +41,7 @@ function _rcm_style_fn(modules) {
       .split(' ')
       .reduce(function(c, i) {
         if (!c) {
-          c += h(i);
+          c = h(i);
         } else {
           c += ' ' + h(i);
         }
@@ -95,7 +95,7 @@ function _rcm_style_fn(modules) {
       .split(' ')
       .reduce(function(c, i) {
         if (!c) {
-          c += h(i);
+          c = h(i);
         } else {
           c += ' ' + h(i);
         }

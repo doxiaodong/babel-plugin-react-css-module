@@ -48,7 +48,7 @@ export default {
                 return str.replace(/ +/g, ' ').trim().split(' ')
                 .reduce(function(c, i) {
                   if (!c) {
-                    c += h(i);
+                    c = h(i);
                   } else {
                     c += ' ' + h(i);
                   }
