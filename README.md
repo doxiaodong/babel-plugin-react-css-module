@@ -1,5 +1,7 @@
 ### cssModule plugin
 
+npm i babel-plugin-react-css-module
+
 ### feature
 
 > see test/fixtures for realtime output
