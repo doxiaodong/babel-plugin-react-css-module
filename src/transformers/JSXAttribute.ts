@@ -10,24 +10,21 @@ class ClassNamePlugin {
     this.JSXExpressionContainer();
   }
 
-  private _getExpressionByStringLiteral(value: any): t.Expression {
-    if (!t.isExpression(value)) {
-      value = t.stringLiteral(value);
-    }
+  private _getExpression(value: any): t.Expression {
     return t.callExpression(t.identifier(cssVar), [value]);
   }
   private _replaceExpression(value: any) {
     this._path.replaceWith(
       t.jsxAttribute(
         t.jsxIdentifier('className'),
-        t.jsxExpressionContainer(this._getExpressionByStringLiteral(value)),
+        t.jsxExpressionContainer(this._getExpression(value)),
       ),
     );
   }
 
   StringLiteral() {
     if (t.isStringLiteral(this._node.value)) {
-      this._replaceExpression(this._node.value.value);
+      this._replaceExpression(this._node.value);
     }
   }
 
