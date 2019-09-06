@@ -109,13 +109,3 @@ var _rcm_style = _rcm_style_fn([_styles, _styles2]);
 
 <div className={_rcm_style('home')} onClick={() => null} />;
 ```
-
-- [x] BinaryExpression
-
-```jsx
-// source
-<div className={'home' + ' base' + x} />
-
-// dist
-<div className={styles['home'] + ' ' + styles[' base'] + x} />;
-```
