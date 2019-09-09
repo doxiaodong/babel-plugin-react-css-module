@@ -2,9 +2,50 @@
 
 npm i babel-plugin-react-css-module
 
+### why
+
+we love cssModule, but it's annoying for `styles.aaa` or `styles['aaa']`.
+this plugin help convert `'aaa'` to `styles('aaa')`
+
+before:
+
+```
+import styles from './index.less';
+
+<div className={styles.a} />
+<div className={`${styles.a} ${styles.b}`} />
+```
+
+after:
+
+```
+import './index.less';
+
+<div className="a" />
+<div className="a b" />
+```
+
+### cases
+
+- multi styles with try last firstly
+
+```
+import 'a.less';
+import 'b.less';
+
+<div className="a" />
+
+// cssModule
+
+import styles1 from 'a.less';
+import styles2 from 'b.less';
+
+<div className={styles2.a || styles1.a || ''} />
+```
+
 ### feature
 
-> see test/fixtures for realtime output
+> see test/fixtures for complete output
 
 - [x] base
 
